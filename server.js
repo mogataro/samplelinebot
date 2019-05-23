@@ -33,20 +33,31 @@ function handleEvent(event) {
   // console.log(encodeURI(process.env.baseURL + event.message.text));
 
   let names = [];
-  let aaa = axios.get(encodeURI(process.env.baseURL + event.message.text))
-  aaa.then(
+  let promise = axios.get(encodeURI(process.env.baseURL + event.message.text))
+  promise.then(
     function(res) {
       res.data.results.shop.forEach(function(shop){
         names.push(shop.name);
       })
+      return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: names[0]
+        // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
+      })
     }
-  )
+  ).catch(function(error){ // 取得失敗時の処理
+    return client.replyMessage(event.replyToken, {
+      type: 'text',
+      text: '何言ってるかわからないよ。でも愛してる、大好き'
+      // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
+    })
+  });
 
-  return setTimeout(function(){client.replyMessage(event.replyToken, {
-    type: 'text',
-    text: names[0]
-    // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
-  })}, 1000)
+  // return setTimeout(function(){client.replyMessage(event.replyToken, {
+  //   type: 'text',
+  //   text: names[0]
+  //   // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
+  // })}, 1000)
 }
 
 app.listen(PORT);
