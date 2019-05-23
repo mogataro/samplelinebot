@@ -13,10 +13,6 @@ const config = {
 const app = express();
 const axios = require('axios');
 
-// const router = express.Router();
-// const restFacade= require('./rest-facade');
-
-// app.get('/', (req, res) => res.send('Hello LINE BOT!'));
 app.post('/webhook', line.middleware(config), (req, res) => {
     Promise
       .all(req.body.events.map(handleEvent))
@@ -51,7 +47,6 @@ function handleEvent(event) {
     )
     return
   }
-  // console.log(encodeURI(process.env.baseURL + event.message.text));
 
   let names = [];
   let promise = axios.get(encodeURI(process.env.baseURL + event.message.text))
@@ -63,17 +58,14 @@ function handleEvent(event) {
       return client.replyMessage(event.replyToken, {
         type: 'text',
         text: names[0]
-        // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
       })
     }
   ).catch(function(error){ // 取得失敗時の処理
     return client.replyMessage(event.replyToken, {
       type: 'text',
       text: '何言ってるかわからないけど愛してる！'
-      // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
     })
   });
 }
 
 app.listen(PORT);
-// console.log(`Server running at ${PORT}`);
