@@ -18,7 +18,6 @@ const axios = require('axios');
 
 // app.get('/', (req, res) => res.send('Hello LINE BOT!'));
 app.post('/webhook', line.middleware(config), (req, res) => {
-    // console.log(req.body.events);
     Promise
       .all(req.body.events.map(handleEvent))
       .then((result) => res.json(result));
@@ -29,6 +28,28 @@ const client = new line.Client(config);
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
+  }
+  if (
+    event.message.text === '胡散臭い' ||
+    event.message.text === 'うさん臭い' ||
+    event.message.text === 'うさんくさい'
+  ) {
+    let roomId = event.source.roomId
+    client.replyMessage(event.replyToken, {
+      type: 'text',
+      text: 'もっと構ってょ'
+    })
+    console.log(config.channelAccessToken)
+    axios.post(
+      `https://api.line.me/v2/bot/room/${roomId}/leave`,
+      '',
+      {
+        headers: {
+          'Authorization': `Bearer {${config.channelAccessToken}}`
+        }
+      }
+    )
+    return
   }
   // console.log(encodeURI(process.env.baseURL + event.message.text));
 
