@@ -48,16 +48,10 @@ function handleEvent(event) {
   ).catch(function(error){ // 取得失敗時の処理
     return client.replyMessage(event.replyToken, {
       type: 'text',
-      text: '何言ってるかわからないよ。でも愛してる、大好き'
+      text: '何言ってるかわからないけど愛してる！'
       // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
     })
   });
-
-  // return setTimeout(function(){client.replyMessage(event.replyToken, {
-  //   type: 'text',
-  //   text: names[0]
-  //   // text: event.message.text + '大好き'//実際に返信の言葉を入れる箇所
-  // })}, 1000)
 }
 
 app.listen(PORT);
