@@ -27,13 +27,13 @@ function handleEvent(event) {
   }
   if (
     event.message.text === '胡散臭い' ||
-    event.message.text === 'うさん臭い' ||
+    event.message.text === '帰って' ||
     event.message.text === 'うさんくさい'
   ) {
     let roomId = event.source.roomId
     client.replyMessage(event.replyToken, {
       type: 'text',
-      text: 'もっと構ってょ'
+      text: 'もっと構ってょ...'
     })
     console.log(config.channelAccessToken)
     axios.post(

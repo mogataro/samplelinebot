@@ -3,9 +3,9 @@
 
 
 "@line/bot-sdk@^6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@line/bot-sdk/-/bot-sdk-6.7.0.tgz#9b9c71879d043465372facc3fd93d8ec04808cbb"
-  integrity sha512-fZKBunlzPV8w1RxGoqwRZwYa/Xaksd8FtO3s3yMDTRafvjZ2VbomUEwmfSB04V5HlLLT8VNO12nYdngoR8Yz7g==
+  version "6.7.1"
+  resolved "https://registry.yarnpkg.com/@line/bot-sdk/-/bot-sdk-6.7.1.tgz#b8ad09aa7f955389973aa65789a763d8d6960f5a"
+  integrity sha512-clWdgIM5pPa3J9Ov/tyquRMt/ENcOozPn1kNMuQ7lIhGklt5S+OmPbKEDXWJc7ePGXgQfU+0WtVuJRXgqXwrwA==
   dependencies:
     "@types/body-parser" "^1.16.8"
     "@types/file-type" "^5.2.1"
