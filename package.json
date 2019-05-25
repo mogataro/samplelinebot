@@ -15,5 +15,12 @@
     "axios": "^0.18.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.0"
+  },
+  "now": {
+    "alias": "usankusako.mogashiro.now.sh",
+    "env": {
+      "CHANNEL_ACCESS_TOKEN": "@line-token",
+      "CHANNEL_SECRET": "@line-secret"
+    }
   }
 }
